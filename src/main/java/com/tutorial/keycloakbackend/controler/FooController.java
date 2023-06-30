@@ -50,7 +50,7 @@ public class FooController {
     public ResponseEntity<List<Foo>> update(@PathVariable("id") int id, @RequestBody Foo foo){
         Foo fooUpdate = foos.stream().filter(f -> f.getId() == id ).findFirst().orElse(null);
         fooUpdate.setName(foo.getName());
-        foos.add(fooUpdate);
+
         return new ResponseEntity(new ResponseMessage("Atualizado"), HttpStatus.OK);
     }
 

@@ -1,8 +1,15 @@
 package com.tutorial.keycloakbackend.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tb_foo")
 public class Foo {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name="name")
     private String name;
 
     public Foo() {
@@ -12,16 +19,16 @@ public class Foo {
         this.name = name;
     }
 
-    public Foo(int id, String name) {
+    public Foo(Integer id, String name) {
         this.name = name;
         this.id = id;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

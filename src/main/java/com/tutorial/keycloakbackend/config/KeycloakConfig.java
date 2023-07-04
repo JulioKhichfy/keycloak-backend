@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
@@ -44,6 +45,11 @@ public class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
                 .anyRequest().permitAll();
         http.cors();
         http.csrf().disable();
+    }
+
+    @Override
+    public void configure(final WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/h2-console/**");
     }
 
     @Bean
